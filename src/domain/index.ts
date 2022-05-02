@@ -6,7 +6,7 @@ export type Cart = {
 export type CartId = string;
 export type Item = string;
 
-export type ItemLines = Map<string, number>;
+export type ItemLines = Map<Item, number>;
 
 export type PersistCart = (cart: Cart) => Promise<void>;
 export type GetCartById = (id: CartId) => Promise<Cart>;
@@ -24,7 +24,7 @@ export type CartEvent = ItemWasAdded;
 
 export type ItemWasAdded = {
     cart: CartId,
-    item: string,
+    item: Item,
     quantity: number
 };
 

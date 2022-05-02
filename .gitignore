@@ -274,4 +274,4 @@ dist
 
 # End of https://www.toptal.com/developers/gitignore/api/node,visualstudiocode,yarn,intellij+all
 
-./dev.db
+dev.db
