@@ -68,11 +68,12 @@ const bootstrap = async () => {
 			cartId = cart.id;
 			request.session.cartId = cartId;
 		}
-	
+
 		cart = await addCartItem({
 			cart: cartId,
 			item: product
-		})
+		});
+
 		response.redirect('/');
 	});
 	
@@ -83,7 +84,6 @@ const bootstrap = async () => {
 
 
 }
-
 
 bootstrap();
 

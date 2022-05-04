@@ -64,11 +64,3 @@ export const releaseEvents = (cart: Cart): CartEvent[] => {
     events.delete(cart.id);
     return cartEvents ?? [];
 }
-
-const removeLineItem = (itemLines: ItemLine[], itemLine: ItemLine) => {
-    const idx = itemLines.indexOf(itemLine);
-    if (idx >= 0) {
-        itemLines.splice(idx, 1);
-    }
-    return idx;
-}

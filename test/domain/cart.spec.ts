@@ -13,8 +13,11 @@ describe('cart', () => {
         cart = addItem(cart, 'FRIED-CHIKEN');
         cart = addItem(cart, 'BURGER');
         cart = addItem(cart, 'FRIED-CHIKEN');
+        cart = addItem(cart, 'FRIED-CHIKEN');
+        cart = addItem(cart, 'FRIED-CHIKEN');
+        cart = addItem(cart, 'BURGER');
 
-        expect(cart.itemLines).toContainEqual({ item: 'FRIED-CHIKEN', quantity: 2 });
-        expect(cart.itemLines).toContainEqual({ item: 'BURGER', quantity: 1 })
+        expect(cart.itemLines).toContainEqual({ item: 'FRIED-CHIKEN', quantity: 4 });
+        expect(cart.itemLines).toContainEqual({ item: 'BURGER', quantity: 2 });
     })
 })
