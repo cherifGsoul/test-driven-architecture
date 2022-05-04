@@ -37,23 +37,25 @@ export const addItem = (cart: Cart, item: string)  => {
         return itemLine.item === item;
     });
 
-    let itemLines = [...cart.itemLines]
-
-    if (itemLine) {
-        removeLineItem(itemLines, itemLine);
-    }
+    let itemLines = [...cart.itemLines];
 
     if (!itemLine) {
         itemLine = { item, quantity: 0 };
+        itemLines = [...itemLines, itemLine];
     }
 
-    const quantity = itemLine.quantity + 1;
-    itemLine = { ...itemLine, quantity }
+    itemLines = itemLines.map(itemLineInCart => {
+        if (itemLineInCart.item === itemLine?.item) {
+            const quantity = itemLine.quantity + 1;
+            itemLine = { ...itemLine, quantity }
+            return itemLine;
+        }
+        return itemLineInCart;
+    });
 
-    itemLines = [...itemLines, itemLine];
-    cartWithItems = { ...cartWithItems, itemLines };
+    cartWithItems = { ...cartWithItems, itemLines: itemLines };
     const currentEvents = events.get(cartWithItems.id) ?? [];
-    events.set(cartWithItems.id, [...currentEvents, {cart: cart.id, item, quantity}]);
+    events.set(cartWithItems.id, [...currentEvents, {cart: cart.id, item, quantity: itemLine.quantity}]);
     return cartWithItems;
 }
 
@@ -66,6 +68,7 @@ export const releaseEvents = (cart: Cart): CartEvent[] => {
 const removeLineItem = (itemLines: ItemLine[], itemLine: ItemLine) => {
     const idx = itemLines.indexOf(itemLine);
     if (idx >= 0) {
-        itemLines.splice(idx)
+        itemLines.splice(idx, 1);
     }
+    return idx;
 }
