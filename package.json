@@ -15,7 +15,9 @@
         "typescript": "^4.6.4"
     },
     "scripts": {
+        "build": "tsc",
         "start:dev": "nodemon src/index.ts",
+        "start": "nodemon dist/index.js",
         "test:acceptance": "jest --config ./test/jest.acceptance.json",
         "test:micro": "jest --config ./test/jest.micro.json",
         "test:contract": "jest --config ./test/jest.contract.json",
