@@ -5,13 +5,19 @@ describe('cart', () => {
     it('should add items', () => {
         let cart: Cart = newEmptyCart(v4());
         cart = addItem(cart, 'FRIED-CHIKEN');
-        expect(cart.itemLines.get('FRIED-CHIKEN')).toBe(1);
+        const itemLine = cart.itemLines.find(itemLine => {
+            return itemLine.item === 'FRIED-CHIKEN'
+        })
+        expect(itemLine?.quantity).toBe(1);
     })
 
     it('should aggregate items quantities', () => {
         let cart: Cart = newEmptyCart(v4());
         cart = addItem(cart, 'FRIED-CHIKEN');
         cart = addItem(cart, 'FRIED-CHIKEN');
-        expect(cart.itemLines.get('FRIED-CHIKEN')).toBe(2);
+        const itemLine = cart.itemLines.find(itemLine => {
+            return itemLine.item === 'FRIED-CHIKEN'
+        })
+        expect(itemLine?.quantity).toBe(2);
     })
 })

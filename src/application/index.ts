@@ -59,7 +59,7 @@ export const listCartItems = (
     return async (id: string) => {
         try {
             const cart = await getCartById(id);
-            return Array.from(cart.itemLines, ([item, quantity]) => ({ item, quantity: quantity }));
+            return cart.itemLines;
         } catch(err: any) {
             throw new Error(err.message)
         }
