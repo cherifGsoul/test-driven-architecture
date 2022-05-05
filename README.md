@@ -9,7 +9,7 @@ npm install
 - create the database:
 
 ```
-npm run mikro-orm database:create
+npx mikro-orm database:create
 ```
 
 - Create the DB schema:
