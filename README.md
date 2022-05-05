@@ -6,6 +6,8 @@
 npm install
 ```
 
+- Copy `.env.dist` to `.env`
+
 - create the database:
 
 ```
